@@ -58,6 +58,12 @@ This is an example branch structure, not a requirement to create every branch im
 - Do not merge your own pull request without the required approval.
 - Delete merged feature branches when appropriate.
 
+## Dependency Systems and Makefile
+
+Frontend dependencies are managed independently with npm; `package.json` declares dependencies and scripts, while `package-lock.json` provides reproducible resolution. Backend dependencies are managed separately through `backend/requirements.txt` and `backend/requirements-dev.txt`, with `backend/.venv/` used locally.
+
+From the repository root, use GNU Make for `make help`, `make install`, `make dev-frontend`, `make dev-backend`, `make test`, and `make build`. Run development servers in separate terminals. Windows, Linux, and macOS developers should not commit generated virtual environments or node modules.
+
 ## MVP Scope
 
 ### P0 - Required for first release

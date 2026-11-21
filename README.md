@@ -6,7 +6,7 @@ A centralized public website and management platform for the GNIOT CSE Tech Club
 
 The project provides one platform for club information, student engagement, event management, registrations, and future attendance and reporting workflows. It is intended to replace fragmented Google Forms-based event processes with a maintained system owned by the club.
 
-The target MVP is before mid-January 2027.
+The target MVP is before mid-January 2027 (expected/assumed).
 
 ## Main Objectives
 
@@ -74,15 +74,17 @@ Additional frameworks should not be introduced without project approval.
 ## Repository Structure
 
 ```text
-backend/
+backend/                  Python, FastAPI, SQLAlchemy, Alembic, Pydantic, and MySQL 8.
   app/
-    api/v1/       FastAPI API modules
-    main.py       FastAPI application entry point
-  requirements.txt
-frontend/
+    api/v1/               FastAPI API modules
+    main.py               FastAPI application entry point
+  requirements.txt        Runtime dependencies only
+  requirements-dev.txt    Development AND runtime dependencies
+frontend/                 React, Vite, Tailwind CSS, Axios or Fetch, TanStack Query, React Hook Form, Zod, FullCalendar, & Vite PWA.
   src/
   public/
   package.json
+  package-lock.json
 docs/
   architecture/
   database/
@@ -92,7 +94,9 @@ docs/
   deployment/
   development/
   decisions/
-.github/
+  TEAM_ONBOARDING.md
+  README.md
+.github/                 Context management
   instructions/
   ISSUE_TEMPLATE/
 ```
@@ -107,14 +111,41 @@ Prerequisites:
 - Python 3
 - MySQL 8 for database-backed development
 - Git
+- GNU Make if using the root Makefile
+- An existing Node.js package-lock file for reproducible frontend installs
 
 Clone the repository and use the setup instructions below.
+
+## Dependency Management
+
+The frontend and backend use separate dependency systems:
+
+- `frontend/package.json` declares dependencies and npm scripts.
+- `frontend/package-lock.json` locks the npm dependency resolution.
+- `frontend/node_modules/` is generated locally and must never be committed.
+- `backend/requirements.txt` contains direct runtime dependencies.
+- `backend/requirements-dev.txt` contains development and testing dependencies in addition to runtime dependencies.
+
+Use `npm ci` for reproducible frontend installation when the lockfile is unchanged. Use `npm install` only when intentionally adding or changing frontend dependencies.
+
+Use the Makefile from the repository root for common development commands:
+
+```text
+make help
+make install
+make dev-frontend
+make dev-backend
+make test
+make build
+```
+
+GNU Make is required for these commands. Windows, Linux, and macOS developers should run the frontend and backend development targets in separate terminals.
 
 ## Frontend Setup
 
 ```bash
 cd frontend
-npm install
+npm ci
 npm run dev
 ```
 
@@ -122,17 +153,38 @@ Available scripts include `npm run build`, `npm run lint`, and `npm run preview`
 
 ## Backend Setup
 
+Create and activate `backend/.venv`, then install runtime and development dependencies.
+
 ```bash
 cd backend
 python -m venv .venv
 ```
 
-Activate the virtual environment using the command appropriate for your operating system, then install dependencies:
+Windows PowerShell:
 
-```bash
-python -m pip install -r requirements.txt
+```powershell
+.\.venv\Scripts\Activate.ps1
+python -m pip install -r requirements.txt -r requirements-dev.txt
 python -m uvicorn app.main:app --reload
 ```
+
+Windows Command Prompt:
+
+```bat
+.\.venv\Scripts\activate.bat
+python -m pip install -r requirements.txt -r requirements-dev.txt
+python -m uvicorn app.main:app --reload
+```
+
+Linux or macOS:
+
+```bash
+source .venv/bin/activate
+python -m pip install -r requirements.txt -r requirements-dev.txt
+python -m uvicorn app.main:app --reload
+```
+
+The Makefile equivalent is `make install-backend` followed by `make dev-backend`.
 
 The existing backend health endpoints are:
 
