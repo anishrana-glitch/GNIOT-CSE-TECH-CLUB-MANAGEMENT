@@ -57,6 +57,17 @@ Keep commits focused and avoid mixing unrelated changes.
 - Do not add frameworks or dependencies without approval.
 - Never commit secrets, credentials, `.env` files, virtual environments, or build artifacts.
 
+## Dependency Management
+
+- Never commit `frontend/node_modules/`, `backend/.venv/`, `backend/venv/`, or other Python virtual environments.
+- Use `npm install` when intentionally adding or changing frontend dependencies.
+- Commit `frontend/package.json` and `frontend/package-lock.json` together.
+- Use `npm ci` for routine reproducible frontend installation.
+- Add direct backend runtime dependencies to `backend/requirements.txt`.
+- Add test and development dependencies to `backend/requirements-dev.txt`.
+- Document why any new dependency is needed and remove dependencies that are no longer used.
+- Never commit local environment files or credentials.
+
 ## Testing
 
 - Add or update tests for behavior introduced or fixed.

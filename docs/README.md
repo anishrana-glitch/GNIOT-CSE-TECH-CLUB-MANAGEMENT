@@ -6,6 +6,13 @@ This directory contains project documentation that is intended to remain useful 
 
 - [Team Onboarding](TEAM_ONBOARDING.md)
 
+## Developer Workflow
+
+- The frontend uses npm with `frontend/package.json` and `frontend/package-lock.json`.
+- The backend uses Python requirements files with `backend/.venv/` as a local virtual environment.
+- The root `Makefile` provides common setup, development, test, and build commands.
+- Run `make help` for available targets and see the root README for Windows and Unix-like setup instructions.
+
 ## Future Documentation Areas
 
 Add documentation to these locations when the relevant work is established:
