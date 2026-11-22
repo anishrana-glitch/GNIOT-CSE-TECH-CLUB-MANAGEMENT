@@ -6,6 +6,8 @@ This directory contains project documentation that is intended to remain useful 
 
 - [Team Onboarding](TEAM_ONBOARDING.md)
 
+The hierarchical workstream branching rules are internal team guidance in `TEAM_ONBOARDING.md`; they are not a mandatory ownership structure for external contributors.
+
 ## Developer Workflow
 
 - The frontend uses npm with `frontend/package.json` and `frontend/package-lock.json`.

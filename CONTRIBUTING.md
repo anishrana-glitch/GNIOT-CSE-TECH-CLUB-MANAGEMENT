@@ -7,10 +7,10 @@ Thank you for contributing to the GNIOT CSE Tech Club project. Contributions are
 1. Fork the original repository to your GitHub account.
 2. Clone your fork locally.
 3. Add the original repository as `upstream` if you need to synchronize it.
-4. Create a branch from the appropriate parent branch.
+4. Create a focused branch in your fork.
 5. Make focused changes and run relevant tests and linters.
 6. Commit and push the branch to your fork.
-7. Open a pull request against the original repository.
+7. Open a pull request against the original repository, using the base branch specified by the issue or coordinating maintainer.
 8. Request review and address feedback.
 
 External contributors must submit pull requests to the original repository. This does not imply direct repository write access.
@@ -26,7 +26,7 @@ Use lowercase, hyphen-separated descriptive names:
 - `docs/api-guidelines`
 - `refactor/auth-module`
 
-Team module owners manage workstream branches. Contributors under a module owner should branch from and submit pull requests to the relevant workstream branch, not directly to `main`.
+For internal team contributions, workstream owners manage their integration branches. Contributors working under an owner branch from and submit pull requests to the relevant workstream, not directly to `main`. External contributors are not required to follow the internal ownership structure; use the base branch specified by the issue or coordinating maintainer, and ask if it is unclear.
 
 ## Commit Messages
 

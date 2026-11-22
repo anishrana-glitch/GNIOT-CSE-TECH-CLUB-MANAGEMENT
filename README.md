@@ -203,6 +203,4 @@ The repository contains an initial React/Vite frontend and a minimal FastAPI app
 
 We welcome external contributors. Fork the repository, clone your fork, create a focused feature branch, commit and push the changes to your fork, then open a pull request against the original repository. Wait for review before integration.
 
-External contributors do not receive write access automatically. Read [CONTRIBUTING.md](CONTRIBUTING.md) for detailed branch, commit, testing, and pull request requirements.
-
-For team roles and approved branch hierarchy, see [Team Onboarding](docs/TEAM_ONBOARDING.md).
+External contributors do not receive write access automatically. Read [CONTRIBUTING.md](CONTRIBUTING.md) for detailed branch, commit, testing, and pull request requirements. Internal team members follow the workstream process described in [Team Onboarding](docs/TEAM_ONBOARDING.md).
